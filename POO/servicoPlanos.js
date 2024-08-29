@@ -8,17 +8,16 @@ class ServicoPlanos{
 
     constructor(planos){
         typedef('PlanodeVoo', {
-            _id: "string",
+            _id: "number",
             _matricPiloto: "string",
             _idAerovia: "string",
-            _data: "data",
-            _horario: "horario",
+            _data: "Date",
+            _horario: "string",
             _altitude: "number",
-            _slots: "array<numero>",
             _cancelado: "boolean"
         });
 
-        validate(planos, "Array.<Piloto>");
+        validate(planos, "Array.<PlanodeVoo>");
         this._planos = planos;
     }
 
@@ -31,6 +30,9 @@ class ServicoPlanos{
     }
     
     todos(){
-        return _this.planos;
+        return this._planos;
     }
 }
+
+
+export default ServicoPlanos;

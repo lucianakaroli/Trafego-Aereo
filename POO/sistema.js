@@ -21,29 +21,43 @@ class Sistema {
 
     aprovarPlanoDeVoo() {
         let planosVoo = this._servicoPlano.todos();
-        for(let planoDeVoo in planosVoo) {
-            let origem, destino = planoDeVoo.split("-")
-            let aerovia = this.servicoAerovias.recupera(origem, destino);
-            let aeronave  = this.servicoAeronaves.todas().filter(a => a.prefixo === planoDeVoo.getPrefixoAeronave())
+        for(let i = 0; i < planosVoo.length; i++) {
+            let planoDeVoo = planosVoo[i];
+            let split = planoDeVoo.getIdAerovia().split("-");
+            let aerovia = this._servicoAerovias.recupera(split[0], split[1]);
+            if (aerovia === undefined || aerovia.length == 0){
+                continue
+            }
+            aerovia = aerovia[0];
 
-            let slotsSize = Math.ceil(aerovia.getTamanho()/aeronave.getVolocidadeCruzeiro())
+            let aeronave  = this._servicoAeronaves.todas().filter(a => {
+                let prefixoPlano = planoDeVoo.getPrefixoAeronave()
+                let prefixoAeronave = a.getPrefixo()
+                return prefixoAeronave === prefixoPlano
+            })
+            if (aeronave === undefined || aeronave.length == 0){
+                continue
+            }
+            aeronave = aeronave[0];
+
+            let slotsSize = Math.ceil(aerovia.getTamanho()/aeronave.getVelocidadeCruzeiro())
             let dataVoo = planoDeVoo.getData(); //todo estar preparado para meia noite
             let horaVoo = dataVoo.getHours()
             let slots = [horaVoo]
             for (let i = 1; i < slotsSize; i++){
-                slots.append(horaVoo+i);
+                slots.push(horaVoo+i);
             }
 
             planoDeVoo.setSlots(slots);
             for (var slot in slots){
-                let isOcupado = this.isOcupado(planoDeVoo.idAerovia, dataVoo, planoDeVoo.altitude, slot)
+                let isOcupado = this._ocupacaoAerovia.isOcupado(planoDeVoo.getIdAerovia(), dataVoo.toString(), planoDeVoo.getAltitude(), slot)
                 if (isOcupado){
                     //todo erro
                 }
             }
 
             for (var slot in slots){
-                this.ocupacaoAerovia(planoDeVoo.idAerovia, planoDeVoo.data, planoDeVoo.altitude, planoDeVoo.slots)
+                this._ocupacaoAerovia.ocupa(planoDeVoo.getIdAerovia(), dataVoo.toString(), planoDeVoo.getAltitude(), planoDeVoo.slots)
             }
         }
     }

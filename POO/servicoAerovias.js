@@ -16,7 +16,9 @@ class ServicoAerovias{
 
     recupera(origem, destino){
         return this._aerovias.filter(aerovia => {
-            aerovia.getOrigem() === origem && aerovia.getDestino() === destino
+            let id = aerovia.getId();
+            let splits = id.split("-");
+            return splits[0] === origem && splits[1] === destino
         })
     }
     

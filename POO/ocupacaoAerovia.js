@@ -10,7 +10,7 @@ class OcupacaoAerovia {
         this._ocupacoes = new Map();
     }
 
-
+//Altitudes Livres
     altitudesLivres(idAerovia, data){
         return 
     }
@@ -26,3 +26,5 @@ class OcupacaoAerovia {
         return this._ocupacoes.get(chave) === true
     }
 }
+
+export default OcupacaoAerovia;
