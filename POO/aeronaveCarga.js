@@ -4,8 +4,19 @@ import { validate, typedef } from "bycontract";
 import Aeronave from './aeronave.js';
 import AeronaveComercial from './aeronaveComercial.js';
 
+const HorariosPermitidos = [
+    "00:00",
+    "01:00",
+    "02:00",
+    "03:00",
+    "04:00",
+    "05:00",
+    "06:00",
+];
+
 // AeronaveCarga (agregação AeronaveComercial)
 class AeronaveCarga extends AeronaveComercial{
+
     _pesoMax;
 
     constructor(prefixo,velocidadeCruzeiro,autonomia,nomeCIA,pesoMax){
@@ -17,24 +28,14 @@ class AeronaveCarga extends AeronaveComercial{
     getPesoMax(){
         return this._pesoMax;
     }
-    
-    verificaHorario(horario){
-        let HorariosPermitidos = [
-            "00:00",
-            "01:00",
-            "02:00",
-            "03:00",
-            "04:00",
-            "05:00",
-            "06:00",
-        ];
 
-        for (let a of horario){
+    isValido(planoDeVoo){
+        for (let a of planoDeVoo.getHorario()){
             if(!a in HorariosPermitidos){
                 return false;
             }
             return true;
-        }
+        } 
     }
 
     toString(){

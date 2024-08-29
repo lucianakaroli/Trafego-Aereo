@@ -40,6 +40,11 @@ class Sistema {
             }
             aeronave = aeronave[0];
 
+            let isAeronaveValida = aeronave.isValido(planoDeVoo)
+            if(!isAeronaveValida) {
+                continue //todo: criar erro
+            }
+
             let slotsSize = Math.ceil(aerovia.getTamanho()/aeronave.getVelocidadeCruzeiro())
             let dataVoo = planoDeVoo.getData(); //todo estar preparado para meia noite
             let horaVoo = dataVoo.getHours()

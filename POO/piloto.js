@@ -27,6 +27,10 @@ class Piloto {
     isHabilitacaoAtiva(){
         return this._habilitacaoAtiva;
     }
+
+    toString(){
+        return `Matricula: ${this._matricula}, Nome: ${this._nome}, Habilitacao ativa: ${this._habilitacaoAtiva}`;
+    }
 }
 
 export default Piloto;

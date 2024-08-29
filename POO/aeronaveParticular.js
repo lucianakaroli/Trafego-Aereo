@@ -17,6 +17,10 @@ class AeronaveParticular extends Aeronave{
         return this._respManutencao;
     }
 
+    isValido(planoDeVoo){
+        return planoDeVoo.getAltitude() > 25000 && planoDeVoo.getAltitude() < 27000
+    }
+
     toString(){
         return super.toString() + `Responsavel pela manuntecao: ${this._respManutencao}`;
     }

@@ -13,8 +13,12 @@ class AeronaveComercial extends Aeronave{
         this._nomeCIA = nomeCIA;
     }
 
-    get nomeCIA(){
+    getNomeCIA(){
         return this._nomeCIA;
+    }
+
+    isValido(planoDeVoo){
+        return planoDeVoo.getAltitude() > 28000
     }
 
     toString(){
