@@ -1,9 +1,6 @@
 import promptsync from 'prompt-sync'; 
 const prompt = promptsync({sigint: true});
 import { validate, typedef } from "bycontract";
-import Aerovia from './aerovia.js';
-import Aviao from './altitude.js';
-import Piloto from './piloto.js'
 
 class PlanoDeVoo {
     _id;

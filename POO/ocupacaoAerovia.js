@@ -4,26 +4,33 @@ import { validate, typedef } from "bycontract";
 
 
 class OcupacaoAerovia {
-    _ocupacoes;
+    _ocupacoesSlots;
+    _ocupacoesAltitudes;
 
     constructor(){
-        this._ocupacoes = new Map();
+        this._ocupacoesSlots = new Map();
+        this._ocupacoesAltitudes = new Map();
     }
 
-//Altitudes Livres
     altitudesLivres(idAerovia, data){
-        return 
+        let altitudesLivres = []
+        for (let altitude = 25000; altitude<=35000; altitude+=1000){
+            let exist = this._ocupacoesAltitudes.get(`${idAerovia}-${data}-${altitude}`) === true
+            if (!exist){
+                altitudesLivres.push(altitude)
+            }
+        }
+
+        return altitudesLivres
     }
 
     ocupa(idAerovia,data,altitude,slot) {
-        let chave = `${idAerovia}-${data}-${altitude}-${slot}`
-        this._ocupacoes.set(chave, true);
-        return
+        this._ocupacoesAltitudes.set(`${idAerovia}-${data}-${altitude}`, true)
+        this._ocupacoesSlots.set(`${idAerovia}-${data}-${altitude}-${slot}`, true);
     }
 
     isOcupado(idAerovia,data,altitude,slot) {
-        let chave = `${idAerovia}-${data}-${altitude}-${slot}`
-        return this._ocupacoes.get(chave) === true
+        return this._ocupacoesSlots.get(`${idAerovia}-${data}-${altitude}-${slot}`) === true
     }
 }
 

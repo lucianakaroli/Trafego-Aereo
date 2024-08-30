@@ -101,7 +101,7 @@ let planoDeVoo2 = new PlanoDeVoo(2, "BC", "POA-CWB","PA-02", data2, hora2, 30000
 
 let data3 = new Date(2024, 9, 4, 10, 10)
 let hora3 = data3.getHours() + ":" + data3.getMinutes()
-let planoDeVoo3 = new PlanoDeVoo(3, "JM", "POA-FLO", "CA-01", data3, hora3, 21000, false);
+let planoDeVoo3 = new PlanoDeVoo(3, "JM", "POA-FLO", "CA-01", data3, hora3, 35000, false);
 
 let data4 = new Date(2013, 5, 7, 2, 20)
 let hora4 = data4.getHours() + ":" + data4.getMinutes()
@@ -168,5 +168,11 @@ sistema.listarPlanos(7)
 sistema.listarPlanos(8)
 sistema.listarPlanos(9)
 sistema.listarPlanos(10)
+
+console.log("\n \n \n")
+
+console.log("Listando altitudes livres em aerovias\n")
+
+sistema.listarAltitudesLivres()
 
 console.log("\n \n \n")

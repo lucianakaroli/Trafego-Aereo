@@ -46,7 +46,7 @@ class Sistema {
             let split = planoDeVoo.getIdAerovia().split("-");
             let aerovia = this._servicoAerovias.recupera(split[0], split[1]);
             if (aerovia === undefined || aerovia.length == 0){
-                console.log(`Aerovia é inválida.`);
+                console.log(`Aerovia com id ${planoDeVoo.getIdAerovia()} é inválida.`);
                 continue
             }
             aerovia = aerovia[0];
@@ -66,12 +66,13 @@ class Sistema {
 
             let isAeronaveValida = aeronave.isValido(planoDeVoo)
             if(!isAeronaveValida) {
-                console.log(`A aeronave com o id: ${aeronave.getPrefixo()} é invalida`);
+                console.log(`A aeronave com o id: ${aeronave.getPrefixo()} não pode realizar o plano de voo ${planoDeVoo.getId()}`);
                 continue
             }
 
             let slotsSize = Math.ceil(aerovia.getTamanho()/aeronave.getVelocidadeCruzeiro())
             let dataVoo = planoDeVoo.getData(); //toDo: estar preparado para meia noite
+            let dataString = dataVoo.toISOString().split('.')[0]
             let horaVoo = dataVoo.getHours()
             let slots = [horaVoo]
             for (let i = 1; i < slotsSize; i++){
@@ -80,7 +81,7 @@ class Sistema {
 
             planoDeVoo.setSlots(slots);
             for (var slot in slots){
-                let isOcupado = this._ocupacaoAerovia.isOcupado(planoDeVoo.getIdAerovia(), dataVoo.toString(), planoDeVoo.getAltitude(), slot)
+                let isOcupado = this._ocupacaoAerovia.isOcupado(planoDeVoo.getIdAerovia(), dataString, planoDeVoo.getAltitude(), slot)
                 if (isOcupado){
                     console.log(`A aerovia com o Id: ${aerovia.getId()} está ocupada.`);
                     continue
@@ -89,14 +90,15 @@ class Sistema {
 
         // Validando autonomia
         if (aeronave.getAutonomia() >= aerovia.getTamanho() * 1.1) {
-            console.log(`A autonomia da aeronave não é suficiente para percorrer a aerovia.`);
+            console.log(`A autonomia da aeronave ${aeronave.getPrefixo()} não é suficiente para percorrer a aerovia ${aerovia.getId()}`);
           } else {
             console.log("Validação da autonomia da aeronave: OK.");
           }
 
-            for (var slot in slots){
-                this._ocupacaoAerovia.ocupa(planoDeVoo.getIdAerovia(), dataVoo.toString(), planoDeVoo.getAltitude(), planoDeVoo.slots)
-                console.log(`Ocupando aerovia: ${planoDeVoo.getIdAerovia()} | Data: ${dataVoo.toString()} | Altitude: ${planoDeVoo.getAltitude()} | Slot: ${slot}`);
+            for (let i = 0; i < slots.length; i ++){
+                let slot = slots[i]
+                this._ocupacaoAerovia.ocupa(planoDeVoo.getIdAerovia(), dataString, planoDeVoo.getAltitude(), slot)
+                console.log(`Ocupando aerovia: ${planoDeVoo.getIdAerovia()} | Data: ${dataString} | Altitude: ${planoDeVoo.getAltitude()} | Slot: ${slot}`);
             }
         }
     }
@@ -109,6 +111,23 @@ class Sistema {
             console.log(`Plano de Voo com o Id: ${planoVoo.getId()}, Matricula Piloto: ${planoVoo.getMatricPiloto()}, Id Aerovia: ${planoVoo.getIdAerovia()}, Data: ${planoVoo.getData()}, Horario: ${planoVoo.getHorario()}, Altitude: ${planoVoo.getAltitude ()}, Foi cancelado: ${planoVoo.getCancelado()}`);
             return
        }
+    }
+
+    listarAltitudesLivres(){
+        let planosVoo = this._servicoPlano.todos();
+        for(let i = 0; i < planosVoo.length; i++) {
+            let planoDeVoo = planosVoo[i];
+            let idAerovia = planoDeVoo.getIdAerovia()
+            let dataVoo = planoDeVoo.getData(); 
+            let dataString = dataVoo.toISOString().split('.')[0]
+
+           let altitudesLivres = this._ocupacaoAerovia.altitudesLivres(idAerovia, dataString)
+           for (let i =0; i < altitudesLivres.length; i++){
+                let altitudeLivre = altitudesLivres[i];
+                console.log(`Altitude ${altitudeLivre} está livre na data ${dataString} para a aerovia ${idAerovia}`)
+           }
+           console.log("\n\n\n")
+        }
     }
 }
 

@@ -2,8 +2,6 @@ import promptsync from 'prompt-sync';
 const prompt = promptsync({sigint: true});
 import { validate, typedef } from "bycontract";
 
-import Aerovia from './aerovia.js';
-
 // Implementação da classe ServicoAerovias (capaz de recuperar as informações sobre 
 // as aerovias disponíveis para os voos) 
 class ServicoAerovias{

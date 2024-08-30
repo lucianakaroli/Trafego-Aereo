@@ -1,7 +1,6 @@
 import promptsync from 'prompt-sync'; 
 const prompt = promptsync({sigint: true});
 import { validate, typedef } from "bycontract";
-import Aeronave from './aeronave.js';
 import AeronaveComercial from './aeronaveComercial.js';
 
 const HorariosPermitidos = [
