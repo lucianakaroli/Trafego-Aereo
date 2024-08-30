@@ -3,7 +3,6 @@ const prompt = promptsync({sigint: true});
 import { validate, typedef } from "bycontract";
 import Piloto from './piloto.js';
 import ServicoPilotos  from './servicoPilotos.js';
-import Aeronave from './aeronave.js';
 import ServicoAeronave from './servicoAeronave.js';
 import AeronavePassageiros from './aeronavePassageiros.js';
 import AeronaveParticular from './aeronaveParticular.js';
@@ -17,16 +16,16 @@ import Sistema from './sistema.js';
 
 
 // Adiciona pilotos
-let piloto1 = new Piloto("10156","Luciana Silva",true);
-let piloto2 = new Piloto("10157","Bernardo Copstein",true);
-let piloto3 = new Piloto("10158","Julio Machado",true);
-let piloto4 = new Piloto("10159","Vinicius Lopes",true);
-let piloto5 = new Piloto("10160","Luiza Siso",true);
-let piloto6 = new Piloto("10161","Taina Mimessi",true);
-let piloto7 = new Piloto("10162","Danielle Ferreira",true);
-let piloto8 = new Piloto("10163","Gabriela Parpinelli",true);
-let piloto9 = new Piloto("10164","Jaqueline Reaiche",true);
-let piloto10 = new Piloto("10165","Brenda Moreira",true);
+let piloto1 = new Piloto("LS","Luciana Silva",true);
+let piloto2 = new Piloto("BC","Bernardo Copstein",true);
+let piloto3 = new Piloto("JM","Julio Machado",true);
+let piloto4 = new Piloto("VL","Vinicius Lopes",true);
+let piloto5 = new Piloto("LUS","Luiza Siso",true);
+let piloto6 = new Piloto("TM","Taina Mimessi",true);
+let piloto7 = new Piloto("DM","Danielle Ferreira",true);
+let piloto8 = new Piloto("GP","Gabriela Parpinelli",true);
+let piloto9 = new Piloto("JR","Jaqueline Reaiche",true);
+let piloto10 = new Piloto("BM","Brenda Moreira",true);
 
 console.log(piloto1, piloto2, piloto3, piloto4, piloto5, piloto6, piloto7, piloto8, piloto9, piloto10);
 
@@ -94,43 +93,43 @@ console.log(aerovia1, aerovia2, aerovia3, aerovia4, aerovia5, aerovia6, aerovia7
 // Adiciona Plano de Voo
 let data1 = new Date(2023, 2, 1, 4, 50)
 let hora1 = data1.getHours() + ":" + data1.getMinutes()
-let planoDeVoo1 = new PlanoDeVoo(94837, "PRBG", "GRU-POA","PA-01", data1, hora1, 28000, false);
+let planoDeVoo1 = new PlanoDeVoo(1, "LS", "GRU-POA","PA-01", data1, hora1, 28000, false);
 
 let data2 = new Date(2024, 3, 4, 1, 10)
 let hora2 = data2.getHours() + ":" + data2.getMinutes()
-let planoDeVoo2 = new PlanoDeVoo(965337, "GPOF", "POA-CWB","PA-02", data2, hora2, 30000, false);
+let planoDeVoo2 = new PlanoDeVoo(2, "BC", "POA-CWB","PA-02", data2, hora2, 30000, false);
 
 let data3 = new Date(2024, 9, 4, 10, 10)
 let hora3 = data3.getHours() + ":" + data3.getMinutes()
-let planoDeVoo3 = new PlanoDeVoo(94217, "VJFH", "POA-FLO", "CA-01", data3, hora3, 21000, false);
+let planoDeVoo3 = new PlanoDeVoo(3, "JM", "POA-FLO", "CA-01", data3, hora3, 21000, false);
 
 let data4 = new Date(2013, 5, 7, 2, 20)
 let hora4 = data4.getHours() + ":" + data4.getMinutes()
-let planoDeVoo4 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "CA-02", data4, hora4, 28000, false);
+let planoDeVoo4 = new PlanoDeVoo(4, "LUS", "GRU-POA", "CA-02", data4, hora4, 28000, false);
 
 let data5 = new Date(2013, 12, 12, 15, 30)
 let hora5 = data1.getHours() + ":" + data5.getMinutes()
-let planoDeVoo5 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "CA-03",data5, hora5, 28000, false);
+let planoDeVoo5 = new PlanoDeVoo(5, "TM", "GRU-POA", "CA-03",data5, hora5, 28000, false);
 
 let data6 = new Date(2013, 10, 1, 17, 15)
 let hora6 = data6.getHours() + ":" + data6.getMinutes()
-let planoDeVoo6 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "CA-04", data6, hora6, 28000, false);
+let planoDeVoo6 = new PlanoDeVoo(6, "DF", "GRU-POA", "CA-04", data6, hora6, 28000, false);
 
 let data7 = new Date(2013, 8, 5, 18, 45)
 let hora7 = data7.getHours() + ":" + data7.getMinutes()
-let planoDeVoo7 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "PS-01", data7, hora7, 28000, false);
+let planoDeVoo7 = new PlanoDeVoo(7, "GP", "GRU-POA", "PS-01", data7, hora7, 28000, false);
 
 let data8 = new Date(2013, 3, 4, 11, 20)
 let hora8 = data8.getHours() + ":" + data8.getMinutes()
-let planoDeVoo8 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "PS-02", data8, hora8, 28000, false);
+let planoDeVoo8 = new PlanoDeVoo(8, "JR", "GRU-POA", "PS-02", data8, hora8, 28000, false);
 
 let data9 = new Date(2013, 12, 11, 4, 40)
 let hora9 = data9.getHours() + ":" + data9.getMinutes()
-let planoDeVoo9 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "PS-03", data9, hora9, 28000, false);
+let planoDeVoo9 = new PlanoDeVoo(9, "BM", "GRU-POA", "PS-03", data9, hora9, 28000, false);
 
 let data10 = new Date(2013, 10, 2, 2, 30)
 let hora10 = data10.getHours() + ":" + data10.getMinutes()
-let planoDeVoo10 = new PlanoDeVoo(94837, "PRBG", "GRU-POA", "PS-04", data10, hora10, 28000, false);
+let planoDeVoo10 = new PlanoDeVoo(10, "VL", "GRU-POA", "PS-04", data10, hora10, 28000, false);
 
 console.log(planoDeVoo1, planoDeVoo2, planoDeVoo3, planoDeVoo4, planoDeVoo5, planoDeVoo6, planoDeVoo7, planoDeVoo8, planoDeVoo9, planoDeVoo10);
 
@@ -138,6 +137,7 @@ console.log(planoDeVoo1, planoDeVoo2, planoDeVoo3, planoDeVoo4, planoDeVoo5, pla
 let servicoAerovias = new ServicoAerovias([aerovia1, aerovia2, aerovia3, aerovia4, aerovia5, aerovia6, aerovia7, aerovia8, aerovia9, aerovia10]);
 let ocupacaoAerovias = new OcupacaoAerovias();
 let servicoPlano = new ServicoPlano([planoDeVoo1, planoDeVoo2, planoDeVoo3, planoDeVoo4, planoDeVoo5, planoDeVoo6, planoDeVoo7, planoDeVoo8, planoDeVoo9, planoDeVoo10]);
+let servicoPilotos = new ServicoPilotos([piloto1, piloto2, piloto3, piloto4, piloto5, piloto6, piloto7, piloto8, piloto9, piloto10]);
 let servicoAeronaves = new ServicoAeronave([
     aeronaveParticular1, aeronaveParticular2, 
     aeronaveCarga1, aeronaveCarga2,
@@ -145,6 +145,28 @@ let servicoAeronaves = new ServicoAeronave([
     aeronavePassageiros1, aeronavePassageiros2,
     aeronavePassageiros3, aeronavePassageiros4]);
 
-let sistema = new Sistema(servicoAerovias,ocupacaoAerovias,servicoPlano,servicoAeronaves)
+let sistema = new Sistema(servicoAerovias,ocupacaoAerovias,servicoPlano,servicoAeronaves,servicoPilotos)
 
+console.log("Listando aerovias \n")
+sistema.listarAerovias()
+console.log("\n \n \n")
+
+
+console.log("Aprovando plano de voos \n")
 sistema.aprovarPlanoDeVoo()
+console.log("\n \n \n")
+
+
+console.log("Listando plano de voos \n")
+sistema.listarPlanos(1)
+sistema.listarPlanos(2)
+sistema.listarPlanos(3)
+sistema.listarPlanos(4)
+sistema.listarPlanos(5)
+sistema.listarPlanos(6)
+sistema.listarPlanos(7)
+sistema.listarPlanos(8)
+sistema.listarPlanos(9)
+sistema.listarPlanos(10)
+
+console.log("\n \n \n")

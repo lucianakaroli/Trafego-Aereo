@@ -39,7 +39,7 @@ class Aviao extends Aerovia {
 
         for (let altitude = 25000; altitude <= 35000; altitude += 1000) {
             if (!altitudesOcupadas.includes(altitude)) {
-                altitudesLivres.push(altitude);
+                altitudeLivres.push(altitude);
             }
         }
         return altitudeLivre;

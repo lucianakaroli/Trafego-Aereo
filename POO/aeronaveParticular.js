@@ -18,13 +18,13 @@ class AeronaveParticular extends Aeronave{
     }
 
     isValido(planoDeVoo){
-        return planoDeVoo.getAltitude() > 25000 && planoDeVoo.getAltitude() < 27000
+        return planoDeVoo.getAltitude() > 25000 && planoDeVoo.getAltitude() < 27000;
     }
 
     toString(){
         return super.toString() + `Responsavel pela manuntecao: ${this._respManutencao}`;
     }
-        //todo: validar porque só pode voar enter 25k e 27
+        
 }
 
 export default AeronaveParticular;

@@ -72,7 +72,6 @@ class PlanoDeVoo {
         this._cancelado = true;
     }
 
-
     getIdAerovia(){
         return this._idAerovia;
     }

@@ -1,7 +1,6 @@
 import promptsync from 'prompt-sync'; 
 const prompt = promptsync({sigint: true});
 import { validate, typedef } from "bycontract";
-import Piloto from './piloto.js';
 
 // Implementacao da classe ServicoPiloto (capaz de recuperar as informações 
 // relativas aos pilotos que podem ser responsáveis pelos voos)

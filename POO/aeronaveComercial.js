@@ -18,15 +18,13 @@ class AeronaveComercial extends Aeronave{
     }
 
     isValido(planoDeVoo){
-        return planoDeVoo.getAltitude() > 28000
+        return planoDeVoo.getAltitude() > 28000;
     }
 
     toString(){
         return super.toString() + `Nome da CIA aérea: ${this._nomeCIA}`;
     }
 
-
-    //todo: validar porque só pode voar acima de 28.000 pés
 }
 
 export default AeronaveComercial;

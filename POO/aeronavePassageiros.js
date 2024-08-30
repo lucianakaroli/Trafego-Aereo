@@ -21,6 +21,10 @@ class AeronavePassageiros extends AeronaveComercial{
     toString(){
         return super.toString() + `Maximo de passageiros: ${this._maxPassageiros}`; 
     }
+
+    isValido(){
+        return true;
+    }
 }
 
 export default AeronavePassageiros;

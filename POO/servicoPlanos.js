@@ -26,7 +26,12 @@ class ServicoPlanos{
     }
 
     recupera(id){
-       return this._planos.find(PlanoDeVoo => PlanoDeVoo.getId() === id);
+        if(!this._planos){
+            console.log(`Plano de voo com ID ${id} não encontrado.`);
+            return
+        }
+
+       return this._planos.find(planoDeVoo => planoDeVoo.getId() === id);
     }
     
     todos(){
