@@ -5,7 +5,9 @@
   "description": "",
   "main": "fase1.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +16,8 @@
     "bycontract": "^2.0.11",
     "install": "^0.13.0",
     "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
